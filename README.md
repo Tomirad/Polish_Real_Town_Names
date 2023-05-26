@@ -1,2 +1,2 @@
-# Polish_Town_Names
-List of Polish cities, towns, villages and settlements for OpenTTD
+# Polish_Real_Town_Names
+List of towns and villages from the government site with place names for OpenTTD.
