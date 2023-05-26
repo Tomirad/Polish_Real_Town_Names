@@ -2,14 +2,14 @@
 STR_GRF_NAME            	:Polish Real Town Names
 STR_GRF_DESCRIPTION     	:{}Polish Real Town Names to nowy zawiera 27133 polskich miast, miasteczek, wsi i osad. Użyte z urzędowych baz danych {COPYRIGHT} 2023 by Tomirad Trela Version: 1.0 [2023-05-24]{}{BLACK}Data License: {SILVER}CC0 1.0 https://dane.gov.pl/pl/dataset/188,wykaz-urzedowych-nazw-miejscowosci-i-ich-czesci
 STR_GAME_OPTIONS_TOWN_NAME	:Polish Real Town Names
-STR_GRF_URL					:https://github.com/Tomirad/Polish_Town_Names
+STR_GRF_URL					:https://github.com/Tomirad/Polish_Real_Town_Names
 
 STR_PARAM_MORE_CITIES			:Miasta
 STR_PARAM_MORE_CITIES_DESC		:Więcej miast, czym wyższy numer tym większa szansa na miasto, kosztem wsi
 STR_PARAM_MORE_VILLAGES			:Wioski
 STR_PARAM_MORE_VILLAGES_DESC	:Więcej wiosek, czym wyższy numer tym większa szansa na wioskę, kosztem miast
 STR_PARAM_CAPITOLS				:Stolice
-STR_PARAM_CAPITOLS_DESC			:Prawdopodobieństwo pojawienia się metropolii z puli miast
+STR_PARAM_CAPITOLS_DESC			:Prawdopodobieństwo pojawienia się metropolii z puli miast (16 regionalnych stolic)
 STR_PARAM_CITIES				:Duże miasta
 STR_PARAM_CITIES_DESC			:Prawdopodobieństwo pojawienia się większego miasta z puli miast
 STR_PARAM_TOWNS					:Małe miasta
