@@ -1,0 +1,21 @@
+// Polish Town Names for OpenTTD
+// by Tomirad Trela
+// STR_PY_TOWNS_NAMES_COUNT names
+
+grf {
+	grfid:	"\50\43\81\c1";
+	name:	string(STR_GRF_NAME);
+	desc:	string(STR_GRF_DESCRIPTION);
+	version:	2;
+	min_compatible_version:	0;
+	url: string(STR_GRF_URL);
+}
+
+STR_PY_TOWNS_NAMES_POOL
+
+town_names(NAMES) {
+	styles:	string(STR_GAME_OPTIONS_TOWN_NAME);
+	{
+STR_PY_TOWNS_NAMES_FUNC
+	}
+}
