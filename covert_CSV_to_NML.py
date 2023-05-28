@@ -5,7 +5,7 @@ import re
 # - Converts CSV placename databases
 # - Prepares the NML file to generate the newGRF file
 #
-# Author: Tomirad, 28.05.2023, version: 1.4
+# Author: Tomirad, 28.05.2023, version: 1.5
 
 def addToFile(file, list):
     var = open(file, "w")
@@ -195,18 +195,17 @@ for key in poolTowns:
 
 
 for typeTown in poolTowns.keys():
-    
     countTownNames += len(poolTowns[typeTown])
 
 # CREATE .NML
 
 townNamesDict = {
-    'CITIES': (
-        [poolTowns['capitols'], options['text_names_CAPITOLS'], options['town_names_CITIES'], len(poolTowns['capitols'])],
-        [poolTowns['cities'], options['text_names_CITIES'], options['town_names_CITIES'], len(poolTowns['cities'])],
-        [poolTowns['towns'], options['text_names_TOWNS'], options['town_names_CITIES'], len(poolTowns['towns'])],
-        [poolTowns['villages'], options['text_names_VILLAGES'], options['town_names_CITIES'], len(poolTowns['villages'])]
-    ),
+    'CITIES': {
+        'capitols': [poolTowns['capitols'], options['text_names_CAPITOLS'], options['town_names_CITIES'], len(poolTowns['capitols'])],
+        'cities': [poolTowns['cities'], options['text_names_CITIES'], options['town_names_CITIES'], len(poolTowns['cities'])],
+        'towns': [poolTowns['towns'], options['text_names_TOWNS'], options['town_names_CITIES'], len(poolTowns['towns'])],
+        'villages': [poolTowns['villages'], options['text_names_VILLAGES'], options['town_names_CITIES'], len(poolTowns['villages'])]
+    },
     'VILLAGES1': [poolTowns['villages1'], options['text_names_VILLAGES'], options['town_names_VILLAGES1'], len(poolTowns['villages1'])],
     'VILLAGES2': [poolTowns['villages2'], options['text_names_VILLAGES'], options['town_names_VILLAGES2'], len(poolTowns['villages2'])],
     'VILLAGES3': [poolTowns['villages3'], options['text_names_VILLAGES'], options['town_names_VILLAGES3'], len(poolTowns['villages3'])],
@@ -219,18 +218,18 @@ townNamesFunc = []
 textElements = []
 countTownNames = 0
 for key, item in townNamesDict.items():
-    if type(item) is tuple:
+    if type(item) is dict:
         countElements = 0
-        for data in item:
+        for itemKey, data in item.items():
+            print(key, itemKey, data[3])
             textElements.append(createTextElement(data[0], data[1]))
             countElements += data[3]
-            countTownNames += len(data[0])
-            print(key, len(data[0]))
+            countTownNames += data[3]
         townNamesPool.append(createTownFunc(key, "\n".join(textElements), countElements))
         townNamesFunc.append(createTownNames(key, 100))
     else:
-        countTownNames += len(item[0])
-        print(key, len(item[0]))
+        print(key, item[3])
+        countTownNames += item[3]
         townNamesPool.append(createTownFunc(key, createTextElement(item[0], item[1]), item[3]))
         townNamesFunc.append(createTownNames(key, item[2]))
 
