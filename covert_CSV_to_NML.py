@@ -80,22 +80,20 @@ countTownNames = len(townNames)
 print('count town names in LIST', countTownNames)
 
 poolTowns = {
-    'capitals': {},
-    'cities': {},
-    'villages': {}
-}
-
-poolTowns = {
     'capitols': [],
     'cities': [],
     'town': [],
+    'villages': [],
     'villages1': [],
     'villages2': [],
     'villages3': [],
-    'villages4': []
+    'villages4': [],
+    'villages5': [],
+    'lost_names': []
 }
-i = 0
-steps = [16320, 8160, 4080, 2040]
+
+poolVillages = []
+
 for name, town in townNames.items():
     if town.status == -1:
         poolTowns['capitols'].append(town.name)
@@ -105,15 +103,33 @@ for name, town in townNames.items():
         else:
             poolTowns['town'].append(town.name)
     else:
-        if i < steps[0]:
-            poolTowns['villages1'].append(town.name)
-        elif i < steps[0] + steps[1]:
-            poolTowns['villages2'].append(town.name)
-        elif i < steps[0] + steps[1] + steps[2]:
-            poolTowns['villages3'].append(town.name)
-        elif i < steps[0] + steps[1] + steps[2] + steps[3]:
-            poolTowns['villages4'].append(town.name)
-        i += 1
+        poolVillages.append({'name': town.name, 'pop': town.pop})
+
+poolVillages.sort(key = lambda s: (-s['pop'], s['name']))
+
+steps = [46, 16320, 8160, 4080, 1020, 1020]
+
+i = 0
+for town in poolVillages:
+
+    if i < sum(steps[:1]):
+        poolTowns['villages'].append(town['name'])
+    elif i < sum(steps[:2]):
+        poolTowns['villages1'].append(town['name'])
+    elif i < sum(steps[:3]):
+        poolTowns['villages2'].append(town['name'])
+    elif i < sum(steps[:4]):
+        poolTowns['villages3'].append(town['name'])
+    elif i < sum(steps[:5]):
+        poolTowns['villages4'].append(town['name'])
+    elif i < sum(steps[:6]):
+        poolTowns['villages5'].append(town['name'])
+    else:
+        poolTowns['lost_names'].append(town['name'])
+    i += 1
+
+for key in poolTowns:
+    poolTowns[key].sort()
 
 countTownNames = 0
 for typeTown in poolTowns.keys():
@@ -124,18 +140,32 @@ print('count town names in NML', countTownNames)
 # CREATE .NML
 
 townNamesDict = {
-    'CITIES': [poolTowns['capitols'], 100, 100, len(poolTowns['capitols'])] + [poolTowns['cities'], 10, 1, len(poolTowns['cities'])] + [poolTowns['town'], 10, 1, len(poolTowns['town'])],
-    'VILLAGES1': [poolTowns['villages1'], 10, 1, len(poolTowns['villages1'])],
-    'VILLAGES2': [poolTowns['villages2'], 10, 1, len(poolTowns['villages2'])],
-    'VILLAGES3': [poolTowns['villages3'], 10, 1, len(poolTowns['villages3'])],
-    'VILLAGES4': [poolTowns['villages4'], 10, 1, len(poolTowns['villages4'])],
+    'CITIES': (
+        [poolTowns['capitols'], 100, 100, len(poolTowns['capitols'])],
+        [poolTowns['cities'], 10, 1, len(poolTowns['cities'])],
+        [poolTowns['town'], 5, 1, len(poolTowns['town'])],
+        [poolTowns['villages'], 1, 1, len(poolTowns['villages'])]
+    ),
+    'VILLAGES1': [poolTowns['villages1'], 1, 1, len(poolTowns['villages1'])],
+    'VILLAGES2': [poolTowns['villages2'], 1, 1, len(poolTowns['villages2'])],
+    'VILLAGES3': [poolTowns['villages3'], 1, 1, len(poolTowns['villages3'])],
+    'VILLAGES4': [poolTowns['villages4'], 1, 1, len(poolTowns['villages4'])],
 }
 
 townNamesPool = [] 
 townNamesFunc = [] 
+textElements = []
 for key, item in townNamesDict.items():
-    townNamesPool.append(createTownFunc(key, createTextElement(item[0], item[1]), item[3]))
-    townNamesFunc.append(createTownNames(key, item[2]))
+    if type(item) is tuple:
+        countElements = 0
+        for data in item:
+            textElements.append(createTextElement(data[0], data[1]))
+            countElements += data[3]
+        townNamesPool.append(createTownFunc(key, "\n".join(textElements), countElements))
+        townNamesFunc.append(createTownNames(key, 100))
+    else:
+        townNamesPool.append(createTownFunc(key, createTextElement(item[0], item[1]), item[3]))
+        townNamesFunc.append(createTownNames(key, item[2]))
 
 townNameFileTemplate = open("Polish_Real_Town_Names.tnml", encoding='utf-8')
 strPyDict = {
@@ -149,8 +179,14 @@ for row in townNameFileTemplate:
     for key in strPyDict.keys():
         row = row.replace(key, str(strPyDict[key]))
     townNameFile.write(row)
-
 townNameFile.close()
 
 townNameFileTemplate.close()
+
+if len(poolTowns['lost_names']) > 0:
+    lostTownNameFile = open("lost_names.txt", 'w', encoding='utf-8')
+    lostTownNameFile.write("# Count: "+ str(len(poolTowns['lost_names'])))
+    for row in poolTowns['lost_names']:
+        lostTownNameFile.write("\n" + row)
+    lostTownNameFile.close()
 
