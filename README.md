@@ -17,6 +17,11 @@ nmlc info: Town names: 127/128
 Add number id town name:
 `convert_options.ini` > `isTest=True`
 
+##Screenshot from game
+
+![Screenshot from game](https://github.com/Tomirad/Polish_Real_Town_Names/assets/12190843/021db00f-207b-438a-977e-1789cb22500f)
+
+
 ## Sources:
 + https://github.com/OpenTTD
 + https://www.openttd.org/
