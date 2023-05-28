@@ -6,7 +6,7 @@ grf {
 	grfid:	"\50\43\81\c1";
 	name:	string(STR_GRF_NAME);
 	desc:	string(STR_GRF_DESCRIPTION);
-	version:	2;
+	version:	1;
 	min_compatible_version:	1;
 	url: string(STR_GRF_URL);
 }
@@ -30641,6 +30641,93 @@ town_names(VILLAGES4) {
 	}
 }
 
+//elements: 81
+town_names(VILLAGES5) {
+	{
+		text("Ziemsko", 1),
+		text("Zimne Wody", 1),
+		text("Zimnochy-Susły", 1),
+		text("Zmyślanka", 1),
+		text("Zofibór", 1),
+		text("Zubeńsko", 1),
+		text("Zumpy", 1),
+		text("Zuzałka", 1),
+		text("Zwierzchów", 1),
+		text("Zębówko", 1),
+		text("Złote", 1),
+		text("Złotniki Małe-Kolonia", 1),
+		text("Złotniki-Kolonia", 1),
+		text("Złotówek", 1),
+		text("Ładawy", 1),
+		text("Ładnówko", 1),
+		text("Łakno", 1),
+		text("Łapinóż-Rumunki", 1),
+		text("Łazy Leśne", 1),
+		text("Łażyn", 1),
+		text("Łojszyno", 1),
+		text("Łokieć", 1),
+		text("Łomna-Las", 1),
+		text("Łoniów-Kolonia", 1),
+		text("Łopatki-Cegielnia", 1),
+		text("Łopienica", 1),
+		text("Łopienka", 1),
+		text("Łopiszewo", 1),
+		text("Łowiczówka", 1),
+		text("Łubice", 1),
+		text("Łucjanowo", 1),
+		text("Ług", 1),
+		text("Ługowiny", 1),
+		text("Ługowiska", 1),
+		text("Ługówka", 1),
+		text("Łukiany", 1),
+		text("Łysogóra", 1),
+		text("Łyszczarze", 1),
+		text("Łyżki", 1),
+		text("Łąka Dymerska", 1),
+		text("Łąkietka", 1),
+		text("Łążek Chwałowski", 1),
+		text("Łążek Garncarski", 1),
+		text("Łębno", 1),
+		text("Łężec", 1),
+		text("Łężki-Kolonia", 1),
+		text("Łężki-Parcel", 1),
+		text("Ścibiorów", 1),
+		text("Śleszynek", 1),
+		text("Ślizno", 1),
+		text("Śmidzięcino", 1),
+		text("Śmilcz", 1),
+		text("Śniadka Pierwsza", 1),
+		text("Śniadka Trzecia", 1),
+		text("Śniadowo-Stara Stacja", 1),
+		text("Śródlesie", 1),
+		text("Świadki Iławeckie", 1),
+		text("Świecinki", 1),
+		text("Świelino", 1),
+		text("Świemino", 1),
+		text("Świerczyniec", 1),
+		text("Świerczów Mały", 1),
+		text("Świerków", 1),
+		text("Świerzowa Ruska", 1),
+		text("Świnoroje", 1),
+		text("Świńczów", 1),
+		text("Żabczanka", 1),
+		text("Żarnowica Mała", 1),
+		text("Żbijowa", 1),
+		text("Żegocino", 1),
+		text("Żegowo", 1),
+		text("Żegrowo", 1),
+		text("Żelazkowizna", 1),
+		text("Żelebsko", 1),
+		text("Żelgoszcz", 1),
+		text("Żernica Niżna", 1),
+		text("Żuk Nowy", 1),
+		text("Żuków Drugi", 1),
+		text("Żur", 1),
+		text("Żułów", 1),
+		text("Żwadnik", 1),
+	}
+}
+
 town_names(NAMES) {
 	styles:	string(STR_GAME_OPTIONS_TOWN_NAME);
 	{
@@ -30649,5 +30736,6 @@ town_names(NAMES) {
 		town_names(VILLAGES2, 1),
 		town_names(VILLAGES3, 1),
 		town_names(VILLAGES4, 1),
+		town_names(VILLAGES5, 1),
 	}
 }
