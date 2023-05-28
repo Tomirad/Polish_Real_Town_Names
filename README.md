@@ -6,7 +6,7 @@ Tables with Cities and Villages (look Ludnosc folder)
 2. Create pool names:
 `python convert_CSV_to_NML`
 3. Generate GRF file:
-`nmlc.exe -c --grf polish_real_town_names.grf Polish_Real_Town_Names.nml --lang-dir=lang`
+`nmlc.exe -c --grf polish_real_town_names.grf Polish_Real_Town_Names.nml --lang-dir=lang --custom-tags=custom_tags.txt`
 
 Current:
 ```
