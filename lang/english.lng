@@ -1,6 +1,6 @@
 ##grflangid 0x00
 STR_GRF_NAME            	:Polish Real Town Names
-STR_GRF_DESCRIPTION     	:{}Polish Real Town Names contains 30681 real polish names of cities, towns and villages from national geoportal database, {COPYRIGHT} 2023 by Tomirad Trela Version: 2.2 [2023-05-24]{}{BLACK}Data License: {SILVER}CC0 1.0 https://dane.gov.pl/pl/dataset/188,wykaz-urzedowych-nazw-miejscowosci-i-ich-czesci & https://polskawliczbach.pl
+STR_GRF_DESCRIPTION     	:{}Polish Real Town Names contains 30681 real polish names of cities, towns and villages from national geoportal database, {COPYRIGHT} 2023 by Tomirad Trela Version: 2.3 [2023-05-24]{}{BLACK}Data License: {SILVER}CC0 1.0 https://dane.gov.pl/pl/dataset/188,wykaz-urzedowych-nazw-miejscowosci-i-ich-czesci & https://polskawliczbach.pl
 STR_GAME_OPTIONS_TOWN_NAME	:Polish Real Town Names
 STR_GRF_URL				:https://github.com/Tomirad/Polish_Real_Town_Names
 

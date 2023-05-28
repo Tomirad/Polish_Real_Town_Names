@@ -92,16 +92,26 @@ poolTowns = {
     'lost_names': []
 }
 
-poolVillages = []
+def testingId(symbol, nameId, isTest = False):
+    if isTest == True:
+        formatedNameId = '{:0>5}'.format(nameId)
+        return ' ['+symbol+']['+formatedNameId+']'
+    else:
+        return ''
 
+poolVillages = []
+isTest = False
+townId = 1
 for name, town in townNames.items():
     if town.status == -1:
-        poolTowns['capitols'].append(town.name)
+        townId += 1
+        poolTowns['capitols'].append(town.name + testingId('S', townId, isTest))
     elif town.status == 0:
+        townId += 1
         if town.pop >= 50_000:
-            poolTowns['cities'].append(town.name)
+            poolTowns['cities'].append(town.name + testingId('C', townId, isTest))
         else:
-            poolTowns['town'].append(town.name)
+            poolTowns['town'].append(town.name + testingId('T', townId, isTest))
     else:
         poolVillages.append({'name': town.name, 'pop': town.pop})
 
@@ -111,21 +121,21 @@ steps = [46, 16320, 8160, 4080, 1020, 1020]
 
 i = 0
 for town in poolVillages:
-
     if i < sum(steps[:1]):
-        poolTowns['villages'].append(town['name'])
+        poolTowns['villages'].append(town['name'] + testingId('V', townId, isTest))
     elif i < sum(steps[:2]):
-        poolTowns['villages1'].append(town['name'])
+        poolTowns['villages1'].append(town['name'] + testingId('V1', townId, isTest))
     elif i < sum(steps[:3]):
-        poolTowns['villages2'].append(town['name'])
+        poolTowns['villages2'].append(town['name'] + testingId('V2', townId, isTest))
     elif i < sum(steps[:4]):
-        poolTowns['villages3'].append(town['name'])
+        poolTowns['villages3'].append(town['name'] + testingId('V3', townId, isTest))
     elif i < sum(steps[:5]):
-        poolTowns['villages4'].append(town['name'])
+        poolTowns['villages4'].append(town['name'] + testingId('V4', townId, isTest))
     elif i < sum(steps[:6]):
-        poolTowns['villages5'].append(town['name'])
+        poolTowns['villages5'].append(town['name'] + testingId('V5', townId, isTest))
     else:
-        poolTowns['lost_names'].append(town['name'])
+        poolTowns['lost_names'].append(town['name'] + testingId('LT', townId, isTest))
+    townId += 1
     i += 1
 
 for key in poolTowns:
@@ -142,8 +152,8 @@ print('count town names in NML', countTownNames)
 townNamesDict = {
     'CITIES': (
         [poolTowns['capitols'], 100, 100, len(poolTowns['capitols'])],
-        [poolTowns['cities'], 10, 1, len(poolTowns['cities'])],
-        [poolTowns['town'], 5, 1, len(poolTowns['town'])],
+        [poolTowns['cities'], 50, 1, len(poolTowns['cities'])],
+        [poolTowns['town'], 2, 1, len(poolTowns['town'])],
         [poolTowns['villages'], 1, 1, len(poolTowns['villages'])]
     ),
     'VILLAGES1': [poolTowns['villages1'], 1, 1, len(poolTowns['villages1'])],
