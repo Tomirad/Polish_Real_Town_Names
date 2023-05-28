@@ -12,7 +12,8 @@ Current:
 nmlc info: 0 sprites, 0 cached, 0 orphaned, 0 duplicates, 0 newly encoded (python)
 nmlc info: Town names: 126/128
 
-
+Add number id town name:
+convert_options.ini > isTest > True
 
 https://github.com/OpenTTD
 https://www.openttd.org/
