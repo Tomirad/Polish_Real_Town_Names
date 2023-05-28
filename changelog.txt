@@ -1,0 +1,33 @@
+v1.0 [24.04.2017]
+- Start idea
+- Names: about 17_000
+
+v1.1 [23.05.2023]
+- Start again
+- Names: about 26_000
+
+v1.2 [24.05.2023]
+- Rebuild list for precision count blocks
+- Names: about 29_000
+- create python script for help generating .nml
+- create template NML file as .tnml
+
+v1.3 [27.05.2023]
+- Names: 30681
+- Final numbers:
+	CITIES capitols 16
+	CITIES cities 68
+	CITIES towns 890
+	CITIES villages 46
+	VILLAGES1 16320
+	VILLAGES2 8160
+	VILLAGES3 4080
+	VILLAGES4 1020
+	VILLAGES5 81
+- upgrade python code
+- add options external file
+
+v1.4[28.05.2023]
+- upgrade python code, adding prefix names for testing in game
+- Send file to BaNaNa
+

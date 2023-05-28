@@ -1,7 +1,7 @@
 ##grflangid 0x30
-STR_GRF_NAME            	:Polish Real Town Names
-STR_GRF_DESCRIPTION     	:{}Polish Real Town Names to nowy zawiera 30681 polskich miast, miasteczek, wsi i osad. Użyte z urzędowych baz danych {COPYRIGHT} 2023 by Tomirad Trela Version: 1.4 [2023-05-28]{}{BLACK}Data License: {SILVER}CC0 1.0 https://dane.gov.pl/pl/dataset/188,wykaz-urzedowych-nazw-miejscowosci-i-ich-czesci & https://polskawliczbach.pl 
-STR_GAME_OPTIONS_TOWN_NAME	:Polish Real Town Names
+STR_GRF_NAME            	:{TAGS_TITLE}
+STR_GRF_DESCRIPTION     	:{}Polish Real Town Names to nowy zawiera {TAGS_NAMES} polskich miast, miasteczek, wsi i osad. Użyte z urzędowych baz danych.{}Stworzone przez {TAGS_AUTHOR}.{}Version: {TAGS_VERSION} [{TAGS_UPDATE}]{}{BLACK}Data License: {SILVER}CC 4.0 https://polskawliczbach.pl 
+STR_GAME_OPTIONS_TOWN_NAME	:Polskie (rzeczywiste)
 STR_GRF_URL					:https://github.com/Tomirad/Polish_Real_Town_Names
 
 STR_PARAM_MORE_CITIES			:Miasta
