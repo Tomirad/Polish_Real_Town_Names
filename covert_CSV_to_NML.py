@@ -56,6 +56,7 @@ def createTownNames(func, text):
 # GET OPTIONS
 optionsType = {
     'isTest': 'bool',
+    'insertionTestContent': 'strlist',
     'town_names_CITIES': 'int',
     'town_names_VILLAGES1': 'int',
     'town_names_VILLAGES2': 'int',
@@ -73,6 +74,7 @@ optionsType = {
 }
 options = {
     'isTest': False,
+    'insertionTestContent': 'suffix',
     'town_names_CITIES': 100,
     'town_names_VILLAGES1': 1,
     'town_names_VILLAGES2': 1,
@@ -99,6 +101,9 @@ for row in optionsFile:
                 options[param[0]] = int(param[1])
             case 'list':
                 options[param[0]] = list(param[1])
+            case 'strlist':
+                if str(param[1]) in ('suffix', 'prefix'):
+                    options[param[0]] = str(param[1])
             case _:
                 options[param[0]] = str(param[1])
 
@@ -147,25 +152,29 @@ poolTowns = {
     'lost_names': []
 }
 
-def testingId(symbol, nameId, isTest = False):
+def townName(name, symbol, nameId, isTest = False, insertion='suffix'):
+    left = right = ''
     if isTest == True:
         formatedNameId = '{:0>5}'.format(nameId)
-        return ' ['+symbol+']['+formatedNameId+']'
-    else:
-        return ''
+        textInsertion = '['+symbol+']['+formatedNameId+']'
+        if insertion == 'prefix':
+            left = textInsertion + ' '
+        else:
+            right = ' ' + textInsertion
+    return left + name + right
 
 poolVillages = []
 townId = 1
 for name, town in townNames.items():
     if town.status == -1:
+        poolTowns['capitols'].append(townName(town.name, 'S', townId, options['isTest'], options['insertionTestContent']))
         townId += 1
-        poolTowns['capitols'].append(town.name + testingId('S', townId, options['isTest']))
     elif town.status == 0:
-        townId += 1
         if town.pop >= options['populationForCities']:
-            poolTowns['cities'].append(town.name + testingId('C', townId, options['isTest']))
+            poolTowns['cities'].append(townName(town.name, 'C', townId, options['isTest'], options['insertionTestContent']))
         else:
-            poolTowns['towns'].append(town.name + testingId('T', townId, options['isTest']))
+            poolTowns['towns'].append(townName(town.name, 'T', townId, options['isTest'], options['insertionTestContent']))
+        townId += 1
     else:
         poolVillages.append({'name': town.name, 'pop': town.pop})
 
@@ -174,19 +183,20 @@ poolVillages.sort(key = lambda s: (-s['pop'], s['name']))
 i = 0
 for town in poolVillages:
     if i < sum(options['stepList'][:1]):
-        poolTowns['villages'].append(town['name'] + testingId('V', townId, options['isTest']))
+        poolTowns['villages'].append(townName(town['name'], 'V', townId, options['isTest'], options['insertionTestContent']))
     elif i < sum(options['stepList'][:2]):
-        poolTowns['villages1'].append(town['name'] + testingId('V1', townId, options['isTest']))
+        poolTowns['villages1'].append(townName(town['name'], 'V1', townId, options['isTest'], options['insertionTestContent']))
     elif i < sum(options['stepList'][:3]):
-        poolTowns['villages2'].append(town['name'] + testingId('V2', townId, options['isTest']))
+        poolTowns['villages2'].append(townName(town['name'], 'V2', townId, options['isTest'], options['insertionTestContent']))
     elif i < sum(options['stepList'][:4]):
-        poolTowns['villages3'].append(town['name'] + testingId('V3', townId, options['isTest']))
+        poolTowns['villages3'].append(townName(town['name'], 'V3', townId, options['isTest'], options['insertionTestContent']))
     elif i < sum(options['stepList'][:5]):
-        poolTowns['villages4'].append(town['name'] + testingId('V4', townId, options['isTest']))
+        poolTowns['villages4'].append(townName(town['name'], 'V4', townId, options['isTest'], options['insertionTestContent']))
     elif i < sum(options['stepList'][:6]):
-        poolTowns['villages5'].append(town['name'] + testingId('V5', townId, options['isTest']))
+        poolTowns['villages5'].append(townName(town['name'], 'V5', townId, options['isTest'], options['insertionTestContent']))
     else:
-        poolTowns['lost_names'].append(town['name'] + testingId('LT', townId, options['isTest']))
+        poolTowns['lost_names'].append(townName(town['name'], 'LT', townId, options['isTest'], options['insertionTestContent']))
+        
     townId += 1
     i += 1
 
